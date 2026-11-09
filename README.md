@@ -41,7 +41,7 @@ go run ./cmd/server    # mở http://localhost:8080 (PORT env nếu cần)
 Triển khai Vercel: `vercel --prod --yes` (rewrite toàn bộ path qua `api/index.go`,
 middleware khôi phục đường dẫn gốc).
 
-🌐 **Link deploy:** xem [`deploy_url.txt`](deploy_url.txt)
+🌐 **Link deploy:** https://binhdinh-landslide-warning.vercel.app (xem [`deploy_url.txt`](deploy_url.txt))
 
 ## 📞 Liên hệ HTK – 0396241674 – 09/11/2026
 
