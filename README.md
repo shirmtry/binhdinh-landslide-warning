@@ -32,8 +32,8 @@ Dự án cung cấp công cụ ước tính chỉ số nguy cơ sạt lở theo 
 ```bash
 go mod download
 go build ./...
-go test ./...          # smoke test: /, /about, /api/risk, /api/points, 404
-go run ./cmd/server    # mở http://localhost:8080
+go test ./...              # smoke test: /, /about, /api/risk, /api/points, 404
+go run local/server.go     # mở http://localhost:8080
 ```
 
 ## Deploy
