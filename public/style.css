@@ -1,0 +1,93 @@
+/* Cảnh báo sạt lở Bình Định 2026 — HTK 0396241674 — cập nhật 09/11/2026 */
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #f59e0b;
+  --line: #334155;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+.navbar { background: #020617; border-bottom: 2px solid var(--accent); position: sticky; top: 0; z-index: 10; }
+.nav-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 16px; }
+.brand { font-size: 1.2rem; font-weight: 800; color: var(--text); text-decoration: none; }
+.brand span { color: var(--accent); }
+nav { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+nav a { color: var(--muted); text-decoration: none; padding: 6px 10px; border-radius: 8px; font-size: 0.95rem; }
+nav a:hover, nav a.active { color: #fff; background: var(--card); }
+.btn-hotline {
+  background: var(--accent); color: #111 !important; font-weight: 700;
+  padding: 8px 14px; border-radius: 8px; text-decoration: none; display: inline-block;
+}
+
+.hero { padding: 28px 0 8px; }
+.badge {
+  display: inline-block; background: #7f1d1d; color: #fecaca;
+  padding: 4px 12px; border-radius: 999px; font-size: 0.85rem; margin-bottom: 10px;
+}
+h1 { font-size: 1.9rem; line-height: 1.25; margin-bottom: 12px; }
+h2 { font-size: 1.25rem; margin-bottom: 10px; color: var(--accent); }
+.problem { color: var(--text); max-width: 60rem; }
+.mock-note { color: #fbbf24; font-size: 0.85rem; margin-top: 10px; }
+
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 14px; padding: 20px; margin: 18px 0;
+}
+.card ul { padding-left: 22px; }
+.card a { color: #fbbf24; }
+.center { text-align: center; }
+.contact-block { border-color: var(--accent); }
+
+.risk-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 12px; }
+.risk-form label { display: flex; flex-direction: column; font-size: 0.9rem; color: var(--muted); gap: 4px; }
+input, select {
+  background: #0f172a; color: var(--text); border: 1px solid var(--line);
+  border-radius: 8px; padding: 10px; font-size: 1rem; width: 100%;
+}
+.risk-form button {
+  align-self: end; background: var(--accent); color: #111; border: 0;
+  font-weight: 700; font-size: 1rem; padding: 11px; border-radius: 8px; cursor: pointer;
+}
+.risk-form button:hover { filter: brightness(1.1); }
+.risk-result {
+  display: flex; gap: 18px; align-items: center; margin-top: 16px;
+  border: 2px solid var(--line); border-radius: 12px; padding: 14px;
+}
+.risk-index { font-size: 2.4rem; font-weight: 800; min-width: 120px; text-align: center; }
+.risk-index small { font-size: 1rem; color: var(--muted); }
+.risk-level strong { font-size: 1.1rem; }
+.advice { color: var(--muted); font-size: 0.95rem; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: var(--muted); margin: 8px 0; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 4px; }
+.chart-box { position: relative; height: 340px; }
+
+.filter { margin-bottom: 12px; }
+.filter label { color: var(--muted); font-size: 0.9rem; }
+.filter select { max-width: 220px; margin-left: 6px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 720px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); }
+th { color: var(--accent); white-space: nowrap; }
+.pill { padding: 2px 10px; border-radius: 999px; color: #fff; font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
+
+.safety li { margin: 6px 0; }
+footer { border-top: 1px solid var(--line); background: #020617; margin-top: 28px; padding: 18px 0; font-size: 0.9rem; color: var(--muted); }
+footer a { color: #fbbf24; text-decoration: none; }
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.45rem; }
+  .nav-inner { justify-content: center; }
+  .risk-result { flex-direction: column; text-align: center; }
+  .chart-box { height: 300px; }
+  .card { padding: 14px; }
+}

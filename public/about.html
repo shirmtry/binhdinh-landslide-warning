@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="HTK">
+  <meta name="contact" content="Hotline/Zalo: 0396241674 - htk.contact@gmail.com">
+  <meta name="last-updated" content="2026-11-09">
+  <title>Giới thiệu – Cảnh báo sạt lở Bình Định 2026 | HTK</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/">⛰️ SạtLở<span>BìnhĐịnh</span></a>
+      <nav>
+        <a href="/">Trang chủ</a>
+        <a href="/#diem-sat-lo">15 điểm sạt lở</a>
+        <a href="/about" class="active">Giới thiệu</a>
+        <a class="btn-hotline" href="tel:0396241674">📞 Liên hệ HTK</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1>Giới thiệu dự án</h1>
+      <p>
+        <strong>binhdinh-landslide-warning</strong> là công cụ cảnh báo sạt lở vùng núi Bình Định
+        trong bối cảnh <strong>mùa mưa lũ 2026</strong>: bão số 9 và số 10 (10/2026) trút lượng mưa
+        kỷ lục xuống An Lão, Vĩnh Thạnh, Tây Sơn; lũ sông Kôn dâng cao, đất đồi bão hòa và hàng chục
+        điểm taluy nứt nẻ đe dọa khu dân cư. Cập nhật: <strong>09/11/2026</strong>.
+      </p>
+      <h2>Công nghệ</h2>
+      <ul>
+        <li>Backend: <strong>Go Fiber v2</strong> chạy trên Vercel Go runtime (serverless).</li>
+        <li>API: <code>GET/POST /api/risk</code> tính chỉ số nguy cơ, <code>GET /api/points</code> trả 15 điểm mock.</li>
+        <li>Frontend: HTML + CSS + Chart.js, responsive từ 375px đến 1440px.</li>
+        <li>Toàn bộ dữ liệu là <em>dữ liệu mô phỏng – cập nhật 09/11/2026</em>, phục vụ minh họa cộng đồng.</li>
+      </ul>
+      <h2>Công thức chỉ số nguy cơ (mô phỏng)</h2>
+      <p><code>index = 100 × (0.5·mưa/400 + 0.3·dốc/60 + 0.2·ẩmđất/100)</code> — ngưỡng: Thấp &lt;35,
+        Trung bình 35–54, Cao 55–74, Rất cao ≥75.</p>
+    </section>
+
+    <section class="card contact-block">
+      <h2>📞 Liên hệ HTK – 0396241674</h2>
+      <p>Tác giả: <strong>HTK</strong> · Cập nhật: <strong>09/11/2026</strong></p>
+      <ul>
+        <li>Hotline: <a href="tel:0396241674">0396241674</a></li>
+        <li>Zalo: <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">zalo.me/0396241674</a></li>
+        <li>Email: <a href="mailto:htk.contact@gmail.com">htk.contact@gmail.com</a></li>
+      </ul>
+      <p>Gọi hoặc nhắn Zalo HTK nếu bạn phát hiện điểm sạt lở mới tại An Lão, Vĩnh Thạnh, Tây Sơn.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">HTK</a> · Hotline/Zalo:
+        <a href="tel:0396241674">0396241674</a> ·
+        <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">Zalo</a> ·
+        Email: <a href="mailto:htk.contact@gmail.com">htk.contact@gmail.com</a></p>
+      <p>Cảnh báo sạt lở vùng núi Bình Định · Dữ liệu mô phỏng – cập nhật 09/11/2026</p>
+    </div>
+  </footer>
+</body>
+</html>

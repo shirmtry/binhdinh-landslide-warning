@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="HTK">
+  <meta name="contact" content="Hotline/Zalo: 0396241674 - htk.contact@gmail.com">
+  <meta name="last-updated" content="2026-11-09">
+  <meta name="description" content="Cảnh báo sạt lở vùng núi Bình Định – An Lão, Vĩnh Thạnh, Tây Sơn tháng 11/2026. HTK 0396241674.">
+  <title>Cảnh báo sạt lở vùng núi Bình Định 2026 | HTK</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/">⛰️ SạtLở<span>BìnhĐịnh</span></a>
+      <nav>
+        <a href="/" class="active">Trang chủ</a>
+        <a href="/#diem-sat-lo">15 điểm sạt lở</a>
+        <a href="/about">Giới thiệu</a>
+        <a class="btn-hotline" href="tel:0396241674">📞 Liên hệ HTK</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="badge">🔴 Cao điểm mùa mưa lũ 2026 · Cập nhật: 09/11/2026</p>
+      <h1>Cảnh báo sạt lở vùng núi Bình Định</h1>
+      <p class="problem">
+        Tháng 11/2026, mưa lớn kéo dài sau bão số 9 và số 10 khiến các huyện miền núi
+        <strong>An Lão, Vĩnh Thạnh, Tây Sơn</strong> đối mặt nguy cơ sạt lở đất nghiêm trọng.
+        Nhiều tuyến đường liên xã bị chia cắt, vết nứt taluy xuất hiện sát khu dân cư và trường học.
+        Đất đồi trồng keo đã bão hòa nước, chỉ cần thêm một đợt mưa trên 200mm là có thể trượt lở.
+        Công cụ này giúp bà con ước tính mức nguy hiểm theo lượng mưa và địa hình để chủ động sơ tán.
+        Mọi khuyến nghị cần đối chiếu thêm với thông báo của chính quyền địa phương.
+      </p>
+      <p class="mock-note">⚠️ Dữ liệu mô phỏng – cập nhật 09/11/2026 (không thay thế cảnh báo chính thức)</p>
+    </section>
+
+    <section class="card" id="tinh-toan">
+      <h2>🧮 Tính chỉ số nguy cơ sạt lở (API Go Fiber)</h2>
+      <p>Nhập lượng mưa 24h, độ dốc sườn đồi và độ bão hòa đất — máy chủ Go tính chỉ số rủi ro 0–100.</p>
+      <form id="risk-form" class="risk-form">
+        <label>Lượng mưa 24h (mm)
+          <input type="number" id="rain" min="0" max="400" value="220" required>
+        </label>
+        <label>Độ dốc sườn đồi (°)
+          <input type="number" id="slope" min="0" max="60" value="35" required>
+        </label>
+        <label>Độ bão hòa đất (%)
+          <input type="number" id="soil" min="0" max="100" value="80" required>
+        </label>
+        <button type="submit">Tính nguy cơ</button>
+      </form>
+      <div id="risk-result" class="risk-result" hidden>
+        <div class="risk-index"><span id="risk-value">–</span><small>/100</small></div>
+        <div>
+          <p class="risk-level">Mức cảnh báo: <strong id="risk-level">–</strong></p>
+          <p id="risk-advice" class="advice"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📊 Chỉ số nguy cơ tại 15 điểm theo dõi</h2>
+      <p class="mock-note">Dữ liệu mô phỏng – cập nhật 09/11/2026 · Nguồn: <code>GET /api/points</code></p>
+      <div class="legend">
+        <span><i style="background:#16a34a"></i> Thấp (&lt;35)</span>
+        <span><i style="background:#d97706"></i> Trung bình (35–54)</span>
+        <span><i style="background:#ea580c"></i> Cao (55–74)</span>
+        <span><i style="background:#dc2626"></i> Rất cao (≥75)</span>
+      </div>
+      <div class="chart-box"><canvas id="riskChart" aria-label="Biểu đồ chỉ số nguy cơ sạt lở"></canvas></div>
+    </section>
+
+    <section class="card" id="diem-sat-lo">
+      <h2>📍 Danh sách 15 điểm sạt lở (An Lão · Vĩnh Thạnh · Tây Sơn)</h2>
+      <div class="filter">
+        <label>Lọc theo huyện:
+          <select id="district-filter">
+            <option value="">Tất cả</option>
+            <option>An Lão</option>
+            <option>Vĩnh Thạnh</option>
+            <option>Tây Sơn</option>
+          </select>
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table id="points-table">
+          <thead>
+            <tr><th>#</th><th>Điểm theo dõi</th><th>Huyện</th><th>Mưa 24h</th><th>Chỉ số</th><th>Mức</th><th>Số hộ</th><th>Ghi chú hiện trường</th></tr>
+          </thead>
+          <tbody><tr><td colspan="8">Đang tải dữ liệu từ API…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card safety">
+      <h2>🎒 Kỹ năng an toàn khi có dấu hiệu sạt lở</h2>
+      <ul>
+        <li>Nước suối đột ngột đục ngầu, cây cối nghiêng, đất nứt → rời ngay khỏi chân đồi.</li>
+        <li>Không trú dưới taluy cao, không lội qua ngầm tràn khi mưa lớn.</li>
+        <li>Chuẩn bị túi khẩn cấp: giấy tờ, đèn pin, nước uống, thuốc men, sạc dự phòng.</li>
+        <li>Báo tin sạt lở / cần hỗ trợ: gọi chính quyền xã hoặc hotline HTK <a href="tel:0396241674">0396241674</a>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© 2026 <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">HTK</a> · Hotline/Zalo:
+        <a href="tel:0396241674">0396241674</a> ·
+        <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">Zalo</a> ·
+        Email: <a href="mailto:htk.contact@gmail.com">htk.contact@gmail.com</a></p>
+      <p>Cảnh báo sạt lở vùng núi Bình Định · Dữ liệu mô phỏng – cập nhật 09/11/2026</p>
+    </div>
+  </footer>
+</body>
+</html>
